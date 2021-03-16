@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthkick/controller/route.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,6 +15,8 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator.generatedRoute,
     );
   }
 }
@@ -57,7 +60,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          Navigator.of(context).pushNamed('/loginscreen');
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
