@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:healthkick/controller/route.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
+  //initializing firebase app.
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
