@@ -1,6 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:healthkick/services/authenticationservice.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 // void main() {
 //   runApp(MyApp());
@@ -19,6 +22,7 @@ class LoginPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               TextFormField(
+                // ignore: missing_return
                 validator: (input) {
                   if (input.isEmpty) {
                     return 'Provide an email';
@@ -28,6 +32,7 @@ class LoginPage extends StatelessWidget {
                 onSaved: (input) => _email = input,
               ),
               TextFormField(
+                // ignore: missing_return
                 validator: (input) {
                   if (input.length < 6) {
                     return 'Longer password please';
@@ -55,7 +60,7 @@ class LoginPage extends StatelessWidget {
       try {
         var user = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);
-        Navigator.of(context).pushNamed('/');
+        var ref = Navigator.of(context).pushNamed('/');
       } catch (e) {
         print(e.message);
       }

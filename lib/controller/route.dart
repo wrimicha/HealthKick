@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthkick/main.dart';
+import 'package:healthkick/screens/homescreen.dart';
 import 'package:healthkick/screens/loginscreen.dart';
 
 /*
@@ -18,6 +19,9 @@ class RouteGenerator {
 
       case '/loginscreen':
         return MaterialPageRoute(builder: (_) => LoginPage());
+
+      // case '/homepage':
+      //   return MaterialPageRoute(builder: (_) => HomePage());
 
       default: //if there is no route with the name specified, return an error page
         return _routeNotFound();
