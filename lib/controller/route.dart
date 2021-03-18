@@ -20,8 +20,8 @@ class RouteGenerator {
       case '/loginscreen':
         return MaterialPageRoute(builder: (_) => LoginPage());
 
-      // case '/homepage':
-      //   return MaterialPageRoute(builder: (_) => HomePage());
+      case '/homepage':
+        return MaterialPageRoute(builder: (_) => new HomePage());
 
       default: //if there is no route with the name specified, return an error page
         return _routeNotFound();
