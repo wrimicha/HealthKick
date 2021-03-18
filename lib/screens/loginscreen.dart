@@ -16,7 +16,8 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(),
+      appBar: new AppBar(
+          automaticallyImplyLeading: false, backgroundColor: Colors.pink[600]),
       body: Form(
           key: _formKey,
           child: Column(
@@ -60,7 +61,7 @@ class LoginPage extends StatelessWidget {
       try {
         var user = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);
-        var ref = Navigator.of(context).pushNamed('/');
+        var ref = Navigator.of(context).pushReplacementNamed('/homepage');
       } catch (e) {
         print(e.message);
       }
