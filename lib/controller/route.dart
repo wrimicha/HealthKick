@@ -21,7 +21,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => LoginPage());
 
       case '/homepage':
-        return MaterialPageRoute(builder: (_) => new HomePage());
+        return MaterialPageRoute(builder: (_) => new HomePage(email: args));
 
       default: //if there is no route with the name specified, return an error page
         return _routeNotFound();

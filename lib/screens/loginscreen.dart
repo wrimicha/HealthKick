@@ -61,10 +61,24 @@ class LoginPage extends StatelessWidget {
       try {
         var user = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);
-        var ref = Navigator.of(context).pushReplacementNamed('/homepage');
+        final User ur = FirebaseAuth.instance.currentUser;
+        print(ur.email);
+        print(ur.uid);
+        printUserData(ur.uid);
+        // ignore: unused_local_variable
+        var ref = Navigator.of(context)
+            .pushReplacementNamed('/homepage', arguments: ur.email);
       } catch (e) {
         print(e.message);
       }
     }
+  }
+
+  void printUserData(var user) {
+    CollectionReference collectionReference =
+        FirebaseFirestore.instance.collection('users');
+    collectionReference.snapshots().listen((event) {
+      print(event.docs[0].data().entries);
+    });
   }
 }
