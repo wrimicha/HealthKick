@@ -1,13 +1,31 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  final String email;
+  final user;
 
   HomePage({
     Key key,
-    @required this.email,
+    @required this.user,
   }) : super(key: key);
+
+  String username;
+
+  Future<void> demo() async {
+    DocumentSnapshot documentSnapshot;
+    String id = user.uid;
+
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(id)
+        .get()
+        .then((value) {
+      documentSnapshot = value;
+    });
+    username = documentSnapshot['sex'];
+    print(username);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +35,7 @@ class HomePage extends StatelessWidget {
           automaticallyImplyLeading: false,
         ),
         body: Column(
-          children: [Text("Welcome $email")],
+          children: [Text("Welcome $username")],
         ));
   }
 }

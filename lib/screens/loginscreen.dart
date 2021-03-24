@@ -67,7 +67,7 @@ class LoginPage extends StatelessWidget {
         printUserData(ur.uid);
         // ignore: unused_local_variable
         var ref = Navigator.of(context)
-            .pushReplacementNamed('/homepage', arguments: ur.email);
+            .pushReplacementNamed('/homepage', arguments: ur);
       } catch (e) {
         print(e.message);
       }
@@ -75,10 +75,11 @@ class LoginPage extends StatelessWidget {
   }
 
   void printUserData(var user) {
+    dynamic x;
     CollectionReference collectionReference =
         FirebaseFirestore.instance.collection('users');
     collectionReference.snapshots().listen((event) {
-      print(event.docs[0].data().entries);
+      print("${event.docs[1].data().keys} : ${event.docs[1].data().values}");
     });
   }
 }
