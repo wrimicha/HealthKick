@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +16,11 @@ class HomePage extends StatelessWidget {
   Future<void> demo() async {
     DocumentSnapshot documentSnapshot;
     String id = user.uid;
+    String currUser = FirebaseAuth.instance.currentUser.uid;
 
     await FirebaseFirestore.instance
         .collection("users")
-        .doc(id)
+        .doc(currUser)
         .get()
         .then((value) {
       documentSnapshot = value;
