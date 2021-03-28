@@ -55,7 +55,7 @@ class LoginPage extends StatelessWidget {
   }
 
   void signIn(BuildContext context) async {
-    AuthenticationService service;
+    DocumentSnapshot documentSnapshot;
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       try {
@@ -80,6 +80,7 @@ class LoginPage extends StatelessWidget {
         FirebaseFirestore.instance.collection('users');
     collectionReference.snapshots().listen((event) {
       print("${event.docs[1].data().keys} : ${event.docs[1].data().values}");
+      print(event.docs[1].data()['sex']);
     });
   }
 }
