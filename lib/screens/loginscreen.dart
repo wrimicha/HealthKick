@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:healthkick/models/patient.dart';
 import 'package:healthkick/services/authenticationservice.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -59,28 +60,27 @@ class LoginPage extends StatelessWidget {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       try {
+        // ignore: unused_local_variable
         var user = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);
         final User ur = FirebaseAuth.instance.currentUser;
-        print(ur.email);
-        print(ur.uid);
-        printUserData(ur.uid);
+        final CollectionReference postRef =
+            FirebaseFirestore.instance.collection('/users');
+
+        Map<String, dynamic> postData = {
+          "Name": ur.displayName,
+          "Age": "20",
+          "ID": ur.uid,
+          "Email": ur.email
+        };
+        await postRef.doc(ur.uid).set(postData);
+
         // ignore: unused_local_variable
         var ref = Navigator.of(context)
-            .pushReplacementNamed('/homepage', arguments: ur);
+            .pushReplacementNamed('/homepage', arguments: ur.uid);
       } catch (e) {
         print(e.message);
       }
     }
-  }
-
-  void printUserData(var user) {
-    dynamic x;
-    CollectionReference collectionReference =
-        FirebaseFirestore.instance.collection('users');
-    collectionReference.snapshots().listen((event) {
-      print("${event.docs[1].data().keys} : ${event.docs[1].data().values}");
-      print(event.docs[1].data()['sex']);
-    });
   }
 }

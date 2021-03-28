@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
   final user;
 
@@ -13,22 +14,6 @@ class HomePage extends StatelessWidget {
 
   String username;
 
-  Future<void> demo() async {
-    DocumentSnapshot documentSnapshot;
-    String id = user.uid;
-    String currUser = FirebaseAuth.instance.currentUser.uid;
-
-    await FirebaseFirestore.instance
-        .collection("users")
-        .doc(currUser)
-        .get()
-        .then((value) {
-      documentSnapshot = value;
-    });
-    username = documentSnapshot['sex'];
-    print(username);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +22,7 @@ class HomePage extends StatelessWidget {
           automaticallyImplyLeading: false,
         ),
         body: Column(
-          children: [Text("Welcome $username")],
+          children: [Text("Welcome $user")],
         ));
   }
 }
