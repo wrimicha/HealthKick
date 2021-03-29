@@ -1,18 +1,21 @@
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-// class AuthenticationService {
-//   final FirebaseAuth _firebaseAuth;
-//   AuthenticationService(this._firebaseAuth);
+class DatabaseManager {
+  final CollectionReference usersRef =
+      FirebaseFirestore.instance.collection('users');
 
-//   Stream<User> get authStateChanges => _firebaseAuth.authStateChanges();
-
-//   Future<String> signIn(String email, String password) async {
-//     try {
-//       await _firebaseAuth.signInWithEmailAndPassword(
-//           email: email, password: password);
-//       return "Signed in";
-//     } on FirebaseAuthException catch (e) {
-//       return e.message;
-//     }
-//   }
-// }
+  Future getUserData() async {
+    try {
+      List items = [];
+      await usersRef.get().then((querySnapshot) {
+        querySnapshot.docs.forEach((element) {
+          items.add(element.data);
+        });
+      });
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+}

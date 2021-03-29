@@ -77,7 +77,7 @@ class LoginPage extends StatelessWidget {
 
         // ignore: unused_local_variable
         var ref = Navigator.of(context)
-            .pushReplacementNamed('/homepage', arguments: ur.uid);
+            .pushReplacementNamed('/homepage', arguments: ur);
       } catch (e) {
         print(e.message);
       }

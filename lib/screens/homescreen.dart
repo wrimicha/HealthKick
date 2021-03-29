@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
   final user;
 
@@ -16,13 +15,20 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: new AppBar(
-          backgroundColor: Colors.pink[600],
-          automaticallyImplyLeading: false,
-        ),
-        body: Column(
-          children: [Text("Welcome $user")],
-        ));
+    return new Scaffold(
+        body: StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection('users')
+                .doc(user.uid)
+                .snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              var userDocument = snapshot.data;
+              return Text(userDocument["Name"]);
+            }));
   }
 }
