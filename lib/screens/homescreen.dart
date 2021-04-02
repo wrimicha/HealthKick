@@ -16,6 +16,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        appBar:
+            AppBar(title: Text("Home Page"), backgroundColor: Colors.pink[600]),
         body: StreamBuilder(
             stream: FirebaseFirestore.instance
                 .collection('users')
@@ -28,7 +30,7 @@ class HomePage extends StatelessWidget {
                 );
               }
               var userDocument = snapshot.data;
-              return Text(userDocument["Name"]);
+              return Text("Welcome " + userDocument["name"]);
             }));
   }
 }

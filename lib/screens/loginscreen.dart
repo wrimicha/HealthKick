@@ -5,6 +5,7 @@ import 'package:healthkick/models/patient.dart';
 import 'package:healthkick/services/authenticationservice.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:healthkick/services/database.dart';
 
 // void main() {
 //   runApp(MyApp());
@@ -13,6 +14,7 @@ import 'package:firebase_database/firebase_database.dart';
 class LoginPage extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _email, _password;
+  AuthenticationServices auth = new AuthenticationServices();
 
   @override
   Widget build(BuildContext context) {
@@ -56,30 +58,19 @@ class LoginPage extends StatelessWidget {
   }
 
   void signIn(BuildContext context) async {
-    DocumentSnapshot documentSnapshot;
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       try {
-        // ignore: unused_local_variable
-        var user = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: _email, password: _password);
-        final User ur = FirebaseAuth.instance.currentUser;
-        final CollectionReference postRef =
-            FirebaseFirestore.instance.collection('/users');
-
-        Map<String, dynamic> postData = {
-          "Name": ur.displayName,
-          "Age": "20",
-          "ID": ur.uid,
-          "Email": ur.email
-        };
-        await postRef.doc(ur.uid).set(postData);
-
-        // ignore: unused_local_variable
-        var ref = Navigator.of(context)
-            .pushReplacementNamed('/homepage', arguments: ur);
+        await auth
+            .signInWithEmailAndPass(_email, _password)
+            .then((result) async {
+          if (result != null) {
+            User user = FirebaseAuth.instance.currentUser;
+            Navigator.of(context).pushNamed('/homepage', arguments: user);
+          }
+        });
       } catch (e) {
-        print(e.message);
+        print(e.toString());
       }
     }
   }
