@@ -53,21 +53,18 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              'Main Page, Click login to start',
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.of(context).pushNamed('/loginscreen');
         },
+        label: const Text("Login"),
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        icon: const Icon(Icons.login),
       ),
     );
   }

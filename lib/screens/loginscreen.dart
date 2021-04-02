@@ -66,7 +66,7 @@ class LoginPage extends StatelessWidget {
             .then((result) async {
           if (result != null) {
             User user = FirebaseAuth.instance.currentUser;
-            Navigator.of(context).pushNamed('/homepage', arguments: user);
+            Navigator.of(context).pushNamed('/homescreen', arguments: user);
           }
         });
       } catch (e) {
