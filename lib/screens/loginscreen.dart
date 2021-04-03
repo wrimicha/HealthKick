@@ -74,7 +74,6 @@ class LoginPage extends StatelessWidget {
                 .then((value) {
               print(value.data());
             });
-
             Navigator.of(context).pushNamed('/homescreen', arguments: user);
           }
         });
