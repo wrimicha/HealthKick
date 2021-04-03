@@ -11,6 +11,17 @@ class DatabaseManager {
     });
   }
 
+  getUserInfoByOffice(String office, String myUserName) async {
+    return FirebaseFirestore.instance
+        .collection('users')
+        .where('office', isEqualTo: office)
+        .where('name', isNotEqualTo: myUserName)
+        .get()
+        .catchError((e) {
+      print(e.toString());
+    });
+  }
+
   createChatRoom(String id, roomData) {
     FirebaseFirestore.instance
         .collection('chatroom')

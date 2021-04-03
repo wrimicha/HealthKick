@@ -11,8 +11,8 @@ import 'package:healthkick/screens/loginscreen.dart';
  */
 class RouteGenerator {
   static Route<dynamic> generatedRoute(RouteSettings settings) {
-    final args =
-        settings.arguments; //This variable will hold the name of the page.
+    final args = settings
+        .arguments; //This variable will hold the data passed to the page.
 
     //checks the name of the page and navigates according to it.
     switch (settings.name) {
