@@ -10,4 +10,14 @@ class DatabaseManager {
       print(e.toString());
     });
   }
+
+  createChatRoom(String id, roomData) {
+    FirebaseFirestore.instance
+        .collection('chatroom')
+        .doc(id)
+        .set(roomData)
+        .catchError((e) {
+      print(e.toString());
+    });
+  }
 }

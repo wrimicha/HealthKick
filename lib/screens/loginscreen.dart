@@ -6,6 +6,7 @@ import 'package:healthkick/services/authenticationservice.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:healthkick/services/database.dart';
+import 'package:healthkick/services/helper.dart';
 
 // void main() {
 //   runApp(MyApp());
@@ -66,6 +67,14 @@ class LoginPage extends StatelessWidget {
             .then((result) async {
           if (result != null) {
             User user = FirebaseAuth.instance.currentUser;
+            var userQuery = FirebaseFirestore.instance
+                .collection('users')
+                .doc(user.uid)
+                .get()
+                .then((value) {
+              print(value.data());
+            });
+
             Navigator.of(context).pushNamed('/homescreen', arguments: user);
           }
         });

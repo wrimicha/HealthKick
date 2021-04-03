@@ -1,8 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Helper {
-  static String sharedPreferenceUserName = "USERNAME";
-  static String sharedPreferenceUserEmail = "USEREMAIL";
+  static String sharedPreferenceUserName;
+  static String sharedPreferenceUserEmail;
 
   static Future<void> saveUserName(String username) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -17,11 +17,11 @@ class Helper {
   //getting the data from shared preference
   static Future<String> getUserName() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return await preferences.getString(sharedPreferenceUserName);
+    return preferences.getString(sharedPreferenceUserName);
   }
 
   static Future<String> getUserEmail() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return await preferences.getString(sharedPreferenceUserEmail);
+    return preferences.getString(sharedPreferenceUserEmail);
   }
 }

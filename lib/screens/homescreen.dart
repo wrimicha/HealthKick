@@ -27,6 +27,11 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Home Page"),
         actions: [
+          Center(
+              child: Text(
+            "Logout",
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.normal),
+          )),
           IconButton(
               icon: Icon(Icons.logout),
               onPressed: () {
