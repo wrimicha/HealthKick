@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthkick/main.dart';
-import 'package:healthkick/screens/chathomescreen.dart';
+import 'package:healthkick/screens/chathomescreen_doctor.dart';
+import 'package:healthkick/screens/chathomescreen_patient.dart';
 import 'package:healthkick/screens/chatroomscreen.dart';
 import 'package:healthkick/screens/homescreen.dart';
 import 'package:healthkick/screens/loginscreen.dart';
@@ -25,8 +26,11 @@ class RouteGenerator {
       case '/homescreen':
         return MaterialPageRoute(builder: (_) => new HomePage(user: args));
 
-      case '/chathomescreen':
-        return MaterialPageRoute(builder: (_) => new ChatHome());
+      case '/chathomescreen_patient':
+        return MaterialPageRoute(builder: (_) => new ChatHomeUser());
+
+      case '/chathomecreen_doctor':
+        return MaterialPageRoute(builder: (_) => new ChatHomeDoctor());
 
       case '/chatroomscreen':
         return MaterialPageRoute(builder: (_) => new ChatRoom());
