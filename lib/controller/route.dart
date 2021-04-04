@@ -5,6 +5,7 @@ import 'package:healthkick/screens/chathomescreen_patient.dart';
 import 'package:healthkick/screens/chatroomscreen.dart';
 import 'package:healthkick/screens/homescreen.dart';
 import 'package:healthkick/screens/loginscreen.dart';
+import 'package:healthkick/screens/searchscreen.dart';
 
 /*
  this class will be resonsible for handling the screen navigation of the application. It will also check if the passed values to this page is correct by 
@@ -34,6 +35,9 @@ class RouteGenerator {
 
       case '/chatroomscreen':
         return MaterialPageRoute(builder: (_) => new ChatRoom());
+
+      case '/searchscreen':
+        return MaterialPageRoute(builder: (_) => new SearchScreen());
 
       default: //if there is no route with the name specified, return an error page
         return _routeNotFound();
