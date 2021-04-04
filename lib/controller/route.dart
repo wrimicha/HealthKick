@@ -39,7 +39,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => new ChatRoom());
 
       case '/searchscreen':
-        return MaterialPageRoute(builder: (_) => new SearchScreen());
+        return MaterialPageRoute(builder: (_) => new Search());
 
       default: //if there is no route with the name specified, return an error page
         return _routeNotFound();
