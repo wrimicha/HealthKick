@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:healthkick/models/patient.dart';
 import 'package:healthkick/services/authenticationservice.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -59,6 +62,8 @@ class LoginPage extends StatelessWidget {
   }
 
   void signIn(BuildContext context) async {
+    String typeOfUser;
+
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       try {
@@ -73,8 +78,20 @@ class LoginPage extends StatelessWidget {
                 .get()
                 .then((value) {
               print(value.data());
+              typeOfUser = value.data()['type'];
+
+              if (value.data()['type'] == "doctor") {
+                Navigator.of(context)
+                    .pushNamed('/chathomescreen_doctor', arguments: user);
+              }
+              if (value.data()['type'] != "doctor")
+                Navigator.of(context)
+                    .pushNamed('/chathomescreen_patient', arguments: user);
             });
-            Navigator.of(context).pushNamed('/homescreen', arguments: user);
+
+            //for testing, ill navigate users to chat screen (instead of homescreen)
+
+            //Navigator.of(context).pushNamed('/homescreen', arguments: user);
           }
         });
       } catch (e) {
