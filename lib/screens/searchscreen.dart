@@ -80,10 +80,8 @@ class SearchScreen extends State<Search> {
 
     manager.createChatRoom(chatRoomId, chatRoom);
 
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => ChatRoom(chatRoomId: chatRoomId)));
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => Chat(chatRoomId: chatRoomId)));
   }
 
   Widget userTile(String userName, String userEmail) {
