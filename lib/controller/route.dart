@@ -34,7 +34,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => new ChatDoctor());
 
       case '/chatroomscreen':
-        return MaterialPageRoute(builder: (_) => new ChatRoom());
+        return MaterialPageRoute(builder: (_) => new Chat());
 
       case '/searchscreen':
         return MaterialPageRoute(builder: (_) => new Search());

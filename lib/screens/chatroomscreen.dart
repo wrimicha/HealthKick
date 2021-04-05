@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 
-class ChatRoom extends StatelessWidget {
+class Chat extends StatefulWidget {
   final String chatRoomId;
 
-  ChatRoom({this.chatRoomId});
+  Chat({this.chatRoomId});
 
+  @override
+  ChatRoom createState() => ChatRoom();
+}
+
+class ChatRoom extends State<Chat> {
   @override
   Widget build(BuildContext context) {}
 }
