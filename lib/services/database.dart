@@ -16,7 +16,7 @@ class DatabaseManager {
         .collection('users')
         .where('office', isEqualTo: office)
         .where('type', isEqualTo: 'patient')
-        .where('name', isEqualTo: patientName)
+        .where('name', isEqualTo: patientName.toLowerCase())
         .get()
         .catchError((e) {
       print(e.toString());
