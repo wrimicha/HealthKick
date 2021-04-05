@@ -11,12 +11,12 @@ class DatabaseManager {
     });
   }
 
-  getPatientByOffice(String office, String myUserName) async {
+  getPatientByOffice(String office, String patientName) {
     return FirebaseFirestore.instance
         .collection('users')
         .where('office', isEqualTo: office)
-        .where('name', isNotEqualTo: myUserName)
-        .where('type', isNotEqualTo: 'doctor')
+        .where('type', isEqualTo: 'patient')
+        .where('name', isEqualTo: patientName)
         .get()
         .catchError((e) {
       print(e.toString());

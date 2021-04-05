@@ -81,8 +81,9 @@ class LoginPage extends StatelessWidget {
               typeOfUser = value.data()['type'];
 
               if (value.data()['type'] == "doctor") {
-                Navigator.of(context)
-                    .pushNamed('/chathomescreen_doctor', arguments: user);
+                //Navigator.of(context)
+                // .pushNamed('/chathomescreen_doctor', arguments: user);
+                Navigator.of(context).pushNamed('/searchscreen');
               }
               if (value.data()['type'] != "doctor")
                 Navigator.of(context)
