@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 Widget appBarMain(BuildContext context) {
+  //todo:add logout button and change color to pink
   return AppBar(
     title: Text("Chat Page/Doctor-alpha version"),
     elevation: 0.0,
