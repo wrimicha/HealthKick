@@ -17,9 +17,9 @@ class ChatHomeDoctor extends State<ChatDoctor> {
   Stream chatRooms;
   var username;
   //todo: factoring this method -- added it in databaseManager class to avoid repetetion.
-  String getUserNameFromDb() {
+  Future<String> getUserNameFromDb() async {
     User user = FirebaseAuth.instance.currentUser;
-    var userQuery = FirebaseFirestore.instance
+    var userQuery = await FirebaseFirestore.instance
         .collection('users')
         .doc(user.uid)
         .get()
@@ -49,8 +49,8 @@ class ChatHomeDoctor extends State<ChatDoctor> {
                     userName: snapshot.data.docs[index]
                         .data()['chatRoomId']
                         .toString()
-                        .replaceAll("_", "")
-                        .replaceAll(getUserNameFromDb(), ""),
+                        .split("_")
+                        .last,
                     chatRoomId: snapshot.data.docs[index].data()['chatRoomId'],
                   );
                 },
@@ -63,6 +63,8 @@ class ChatHomeDoctor extends State<ChatDoctor> {
   @override
   void initState() {
     getUserInfoChats();
+
+    getUserNameFromDb();
     super.initState();
   }
 

@@ -34,7 +34,7 @@ class DatabaseManager {
   }
 
   getUserChats(String myName) async {
-    return FirebaseFirestore.instance
+    return await FirebaseFirestore.instance
         .collection('chatroom')
         .where('users', arrayContains: myName)
         .snapshots();
