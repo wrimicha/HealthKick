@@ -32,4 +32,31 @@ class DatabaseManager {
       print(e.toString());
     });
   }
+
+  getUserChats(String myName) async {
+    return await FirebaseFirestore.instance
+        .collection('chatRoom')
+        .where('users', arrayContains: myName)
+        .snapshots();
+  }
+
+  getChats(String chatRoomId) async {
+    return FirebaseFirestore.instance
+        .collection('chatRoom')
+        .doc(chatRoomId)
+        .collection("chats")
+        .orderBy('time')
+        .snapshots();
+  }
+
+  Future<void> addMessage(String chatRoomId, chatMessageData) {
+    FirebaseFirestore.instance
+        .collection('chatRoom')
+        .doc(chatRoomId)
+        .collection('chats')
+        .add(chatMessageData)
+        .catchError((e) {
+      print(e.toString());
+    });
+  }
 }
