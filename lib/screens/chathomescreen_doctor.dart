@@ -13,12 +13,6 @@ class ChatHomeDoctor extends State<ChatDoctor> {
   DatabaseManager manager = new DatabaseManager();
   QuerySnapshot usersListSnapshot;
 
-  void _signOut(BuildContext context) {
-    AuthenticationServices()
-        .signOut()
-        .then((_) => Navigator.of(context).pushNamed('/loginscreen'));
-  }
-
   @override
   Widget build(BuildContext context) {}
 }
