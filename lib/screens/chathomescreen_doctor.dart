@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:healthkick/services/authenticationservice.dart';
 import 'package:healthkick/services/database.dart';
 
-class ChatHomeDoctor extends StatelessWidget {
-  final user;
+class ChatDoctor extends StatefulWidget {
+  @override
+  ChatHomeDoctor createState() => ChatHomeDoctor();
+}
 
-  ChatHomeDoctor({
-    Key key,
-    @required this.user,
-  }) : super(key: key);
+class ChatHomeDoctor extends State<ChatDoctor> {
   DatabaseManager manager = new DatabaseManager();
   QuerySnapshot usersListSnapshot;
 
@@ -21,28 +20,5 @@ class ChatHomeDoctor extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Chat"),
-        actions: [
-          Center(
-              child: Text(
-            "Logout",
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.normal),
-          )),
-          IconButton(
-              icon: Icon(Icons.logout),
-              onPressed: () {
-                _signOut(context);
-              })
-        ],
-        backgroundColor: Colors.pink[600],
-        automaticallyImplyLeading: false,
-      ),
-      body: Column(
-        children: [Text("Doctor's page")],
-      ),
-    );
-  }
+  Widget build(BuildContext context) {}
 }

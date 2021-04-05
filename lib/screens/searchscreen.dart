@@ -12,6 +12,7 @@ class Search extends StatefulWidget {
 }
 
 var username;
+//todo: factoring this method -- added it in databaseManager class to avoid repetetion.
 String docInfo() {
   var docOffice;
   User user = FirebaseAuth.instance.currentUser;
