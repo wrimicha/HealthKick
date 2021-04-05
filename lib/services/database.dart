@@ -35,14 +35,14 @@ class DatabaseManager {
 
   getUserChats(String myName) async {
     return await FirebaseFirestore.instance
-        .collection('chatRoom')
+        .collection('chatroom')
         .where('users', arrayContains: myName)
         .snapshots();
   }
 
   getChats(String chatRoomId) async {
     return FirebaseFirestore.instance
-        .collection('chatRoom')
+        .collection('chatroom')
         .doc(chatRoomId)
         .collection("chats")
         .orderBy('time')
@@ -51,7 +51,7 @@ class DatabaseManager {
 
   Future<void> addMessage(String chatRoomId, chatMessageData) {
     FirebaseFirestore.instance
-        .collection('chatRoom')
+        .collection('chatroom')
         .doc(chatRoomId)
         .collection('chats')
         .add(chatMessageData)
