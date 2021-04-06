@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:healthkick/models/constants.dart';
 import 'package:healthkick/models/patient.dart';
 import 'package:healthkick/services/authenticationservice.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -79,15 +80,16 @@ class LoginPage extends StatelessWidget {
                 .then((value) {
               print(value.data());
               typeOfUser = value.data()['type'];
+              Constants.userName = value.data()['name'];
 
               if (value.data()['type'] == "doctor") {
+                print(Constants.userName);
                 //Navigator.of(context)
                 // .pushNamed('/chathomescreen_doctor', arguments: user);
                 Navigator.of(context).pushNamed('/chathomescreen_doctor');
               }
               if (value.data()['type'] != "doctor")
-                Navigator.of(context)
-                    .pushNamed('/chathomescreen_patient', arguments: user);
+                Navigator.of(context).pushNamed('/chathomescreen_patient');
             });
 
             //for testing, ill navigate users to chat screen (instead of homescreen)

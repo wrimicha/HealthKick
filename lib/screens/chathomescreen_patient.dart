@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:healthkick/models/constants.dart';
 import 'package:healthkick/services/authenticationservice.dart';
 import 'package:healthkick/services/database.dart';
 
@@ -71,10 +72,11 @@ class ChatHomePatient extends State<ChatPatient> {
   }
 
   getUserInfoChats() async {
-    await DatabaseManager().getUserChats(username).then((snapshot) {
+    await DatabaseManager().getUserChats(Constants.userName).then((snapshot) {
       setState(() {
         chatRooms = snapshot;
-        print("we got the data + ${chatRooms.toString()} name is $username");
+        print(
+            "we got the data + ${chatRooms.toString()} name is ${Constants.userName}");
       });
     });
   }

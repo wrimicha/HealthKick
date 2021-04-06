@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:healthkick/models/constants.dart';
 import 'package:healthkick/services/database.dart';
 import 'package:healthkick/widget/widget.dart';
 
@@ -42,8 +43,8 @@ class ChatRoom extends State<Chat> {
                 itemBuilder: (context, index) {
                   return MessageTile(
                     message: snapshot.data.docs[index].data()['message'],
-                    sendByMe:
-                        username == snapshot.data.docs[index].data()['sendBy'],
+                    sendByMe: Constants.userName ==
+                        snapshot.data.docs[index].data()['sendBy'],
                   );
                 },
               )
@@ -56,7 +57,7 @@ class ChatRoom extends State<Chat> {
     var name = getUserNameFromDb();
     if (messageController.text.isNotEmpty) {
       Map<String, dynamic> chatMessageMap = {
-        "sendBy": username,
+        "sendBy": Constants.userName,
         "message": messageController.text,
         "time": DateTime.now().microsecondsSinceEpoch,
       };
