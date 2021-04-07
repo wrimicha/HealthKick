@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:healthkick/models/constants.dart';
 
 Widget appBarMain(BuildContext context) {
   //todo:add logout button and change color to pink
   return AppBar(
-    title: Text("Chat Page/Doctor-alpha version"),
+    title: Text("${Constants.chattingWith}"),
     elevation: 0.0,
     centerTitle: false,
+    backgroundColor: Colors.pink[600],
   );
 }
 

@@ -47,7 +47,7 @@ class ChatHomePatient extends State<ChatPatient> {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return ChatRoomsTile(
-                    userName: snapshot.data.docs[index]
+                    userName: Constants.chattingWith = snapshot.data.docs[index]
                         .data()['chatRoomId']
                         .toString()
                         .split('_')
@@ -85,7 +85,7 @@ class ChatHomePatient extends State<ChatPatient> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Chat Page/patient-alpha v"),
+        title: Text("Messages"),
         actions: [
           Center(
               child: Text(
