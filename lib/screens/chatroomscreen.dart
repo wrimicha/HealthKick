@@ -170,18 +170,14 @@ class MessageTile extends StatelessWidget {
                     topLeft: Radius.circular(23),
                     topRight: Radius.circular(23),
                     bottomRight: Radius.circular(23)),
-            gradient: LinearGradient(
-              colors: sendByMe
-                  ? [const Color(0xff007EF4), const Color(0xff2A75BC)]
-                  : [const Color(0x1AFFFFFF), const Color(0x1AFFFFFF)],
-            )),
+            color: sendByMe ? Colors.pink : Colors.grey[600]),
         child: Text(message,
             textAlign: TextAlign.start,
             style: TextStyle(
-                color: Colors.black,
+                color: sendByMe ? Colors.white : Colors.white,
                 fontSize: 16,
                 fontFamily: 'OverpassRegular',
-                fontWeight: FontWeight.w300)),
+                fontWeight: FontWeight.w500)),
       ),
     );
   }
