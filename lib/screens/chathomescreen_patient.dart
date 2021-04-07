@@ -141,7 +141,7 @@ class ChatRoomsTile extends StatelessWidget {
                       color: Colors.black,
                       fontSize: 16,
                       fontFamily: 'OverpassRegular',
-                      fontWeight: FontWeight.w300)),
+                      fontWeight: FontWeight.w500)),
             ),
             SizedBox(
               width: 12,
@@ -152,7 +152,7 @@ class ChatRoomsTile extends StatelessWidget {
                     color: Colors.black,
                     fontSize: 16,
                     fontFamily: 'OverpassRegular',
-                    fontWeight: FontWeight.w300))
+                    fontWeight: FontWeight.w500))
           ],
         ),
       ),
