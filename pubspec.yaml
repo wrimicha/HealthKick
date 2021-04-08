@@ -29,6 +29,7 @@ dependencies:
   cloud_firestore: ^0.16.0
   firebase_database: "^6.0.0"
   shared_preferences: '>=0.5.12+2 <2.0.0'
+  google_maps_flutter:
 
 
 
