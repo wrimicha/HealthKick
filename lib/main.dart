@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Maps Sample App'),
-          backgroundColor: Colors.red[400], //test
+          backgroundColor: Colors.red[400], //test test
         ),
         body: GoogleMap(
           onMapCreated: _onMapCreated,
