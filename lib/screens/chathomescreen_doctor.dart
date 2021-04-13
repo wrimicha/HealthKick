@@ -34,7 +34,7 @@ class ChatHomeDoctor extends State<ChatDoctor> {
   void _signOut(BuildContext context) {
     AuthenticationServices()
         .signOut()
-        .then((_) => Navigator.of(context).pushNamed('/loginscreen'));
+        .then((_) => Navigator.of(context).pushNamed('/'));
   }
 
   Widget chatRoomsList() {
