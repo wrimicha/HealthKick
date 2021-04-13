@@ -37,7 +37,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   Completer<GoogleMapController> _controller = Completer();
 
   static const LatLng _center = const LatLng(43.6532, -79.3832);
@@ -49,17 +48,18 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Maps Sample App'),
-          backgroundColor: Colors.red[400], //testt
+      appBar: AppBar(
+        title: Text('Maps Sample App'),
+        backgroundColor: Colors.red[400], //testt
+        automaticallyImplyLeading: false,
+      ),
+      body: GoogleMap(
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: CameraPosition(
+          target: _center,
+          zoom: 13.0,
         ),
-        body: GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 13.0,
-          ),
-        ),
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.of(context).pushNamed('/loginscreen');
