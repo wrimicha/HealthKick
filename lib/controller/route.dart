@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthkick/main.dart';
+import 'package:healthkick/screens/appointments.dart';
 import 'package:healthkick/screens/chathomescreen_doctor.dart';
 import 'package:healthkick/screens/chathomescreen_patient.dart';
 import 'package:healthkick/screens/chatroomscreen.dart';
@@ -46,6 +47,9 @@ class RouteGenerator {
 
       case '/profilescreen':
         return MaterialPageRoute(builder: (_) => new ProfilePage());
+
+      case '/appointmentscreen':
+        return MaterialPageRoute(builder: (_) => new AppointmentPage());
 
       default: //if there is no route with the name specified, return an error page
         return _routeNotFound();

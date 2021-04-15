@@ -28,6 +28,12 @@ class HomePageDoctor extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pushNamed('/chathomescreen_doctor');
             },
+          ),
+          RaisedButton(
+            child: Text("Create Patient Appointments"),
+            onPressed: () {
+              //Navigator.of(context).pushNamed('/appointmentscreen');
+            },
           )
         ],
       )),
