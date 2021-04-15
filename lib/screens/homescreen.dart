@@ -29,9 +29,11 @@ class HomePage extends StatelessWidget {
         title: Text("Home Page"),
         actions: [
           Center(),
-          IconButton(icon: Icon(Icons.person), onPressed: () {
-            Navigator.of(context).pushNamed('/profilescreen');
-          })
+          IconButton(
+              icon: Icon(Icons.person),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/profilescreen');
+              })
         ],
         backgroundColor: Colors.pink[600],
         automaticallyImplyLeading: false,
@@ -45,7 +47,7 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pushNamed('/chathomescreen_patient');
             },
-          )
+          ),
         ],
       )),
     );
