@@ -78,6 +78,7 @@ convertNumToMonth(String month) {
 class AppointmentScreen extends State<AppointmentPage> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController _dateController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
   DateTime selectedDate = DateTime.now();
   var patientEmail;
   var appointmentDate;
@@ -111,6 +112,7 @@ class AppointmentScreen extends State<AppointmentPage> {
             Column(
               children: [
                 TextFormField(
+                  controller: _emailController,
                   onSaved: (newValue) => patientEmail = newValue,
                   decoration: InputDecoration(
                     labelText: 'Patient Email',
@@ -124,8 +126,9 @@ class AppointmentScreen extends State<AppointmentPage> {
                       onSaved: (newValue) => appointmentDate = newValue,
                       controller: _dateController,
                       decoration: InputDecoration(
-                          labelText: "Appointment Date",
-                          icon: Icon(Icons.calendar_today)),
+                        labelText: "Appointment Date",
+                        icon: Icon(Icons.calendar_today),
+                      ),
                       validator: (value) {
                         if (value.isEmpty) return "Please add a patient date";
                         return null;
@@ -143,6 +146,8 @@ class AppointmentScreen extends State<AppointmentPage> {
                       DatabaseManager()
                           .getPatientId(patientEmail, appointmentDate);
                     }
+                    _dateController.clear();
+                    _emailController.clear();
                   },
                 )
               ],

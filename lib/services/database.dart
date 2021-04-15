@@ -33,10 +33,10 @@ class DatabaseManager {
         .then((QuerySnapshot querySnapshot) {
       querySnapshot.docs.forEach((element) {
         userid = element.data()['id'];
+        printVal(userid);
         createPatientAppointment(userid, date);
       });
     });
-    //return printVal(userid);
   }
 
   createPatientAppointment(String uid, String date) async {
