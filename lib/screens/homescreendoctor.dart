@@ -34,6 +34,12 @@ class HomePageDoctor extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pushNamed('/appointmentscreen');
             },
+          ),
+          RaisedButton(
+            child: Text("Patient's Health Form"),
+            onPressed: () {
+              Navigator.of(context).pushNamed('/healthformscreen');
+            },
           )
         ],
       )),
