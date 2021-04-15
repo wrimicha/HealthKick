@@ -29,7 +29,9 @@ class HomePage extends StatelessWidget {
         title: Text("Home Page"),
         actions: [
           Center(),
-          IconButton(icon: Icon(Icons.person), onPressed: () {})
+          IconButton(icon: Icon(Icons.person), onPressed: () {
+            Navigator.of(context).pushNamed('/profilescreen');
+          })
         ],
         backgroundColor: Colors.pink[600],
         automaticallyImplyLeading: false,
