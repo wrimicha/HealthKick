@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:healthkick/models/constants.dart';
 import 'package:healthkick/services/authenticationservice.dart';
 import 'package:healthkick/services/database.dart';
 
@@ -27,34 +28,24 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Home Page"),
         actions: [
-          Center(
-              child: Text(
-            "Logout",
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.normal),
-          )),
-          IconButton(
-              icon: Icon(Icons.logout),
-              onPressed: () {
-                _signOut(context);
-              })
+          Center(),
+          IconButton(icon: Icon(Icons.person), onPressed: () {})
         ],
         backgroundColor: Colors.pink[600],
         automaticallyImplyLeading: false,
       ),
-      body: StreamBuilder(
-          stream: FirebaseFirestore.instance
-              .collection('users')
-              .doc(user.uid)
-              .snapshots(),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            var userDocument = snapshot.data;
-            return Text("Welcome " + userDocument["name"]);
-          }),
+      body: Container(
+          child: Column(
+        children: [
+          Text("Hello " + Constants.userName),
+          RaisedButton(
+            child: Text("Go to chat page"),
+            onPressed: () {
+              Navigator.of(context).pushNamed('/chathomescreen_patient');
+            },
+          )
+        ],
+      )),
     );
   }
 }
