@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
   void _signOut(BuildContext context) {
     AuthenticationServices()
         .signOut()
-        .then((_) => Navigator.of(context).pushNamed('/loginscreen'));
+        .then((_) => Navigator.of(context).pushNamed('/'));
   }
 
   @override
