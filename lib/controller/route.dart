@@ -28,7 +28,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => LoginPage());
 
       case '/homescreen':
-        return MaterialPageRoute(builder: (_) => new HomePage(user: args));
+        return MaterialPageRoute(builder: (_) => new HomePagePatient());
 
       case '/chathomescreen_patient':
         return MaterialPageRoute(builder: (_) => new ChatPatient());

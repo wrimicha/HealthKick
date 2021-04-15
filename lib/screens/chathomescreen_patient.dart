@@ -52,8 +52,6 @@ class ChatHomePatient extends State<ChatPatient> {
                         .toString()
                         .split('_')
                         .first,
-                    //.replaceAll("_", "")
-                    //.replaceAll(getUserNameFromDb().toString(), ""),
                     chatRoomId: snapshot.data.docs[index].data()['chatRoomId'],
                   );
                 },

@@ -82,6 +82,7 @@ class LoginPage extends StatelessWidget {
               typeOfUser = value.data()['type'];
 
               Constants.userName = value.data()['name'];
+              Constants.uid = FirebaseAuth.instance.currentUser.uid;
 
               if (value.data()['type'] == "doctor") {
                 print(Constants.userName);
