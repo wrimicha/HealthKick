@@ -89,7 +89,7 @@ class LoginPage extends StatelessWidget {
                 Navigator.of(context).pushNamed('/chathomescreen_doctor');
               }
               if (value.data()['type'] != "doctor")
-                Navigator.of(context).pushNamed('/chathomescreen_patient');
+                Navigator.of(context).pushNamed('/homescreen');
             });
 
             //for testing, ill navigate users to chat screen (instead of homescreen)
