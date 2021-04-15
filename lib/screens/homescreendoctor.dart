@@ -32,7 +32,7 @@ class HomePageDoctor extends StatelessWidget {
           RaisedButton(
             child: Text("Create Patient Appointments"),
             onPressed: () {
-              //Navigator.of(context).pushNamed('/appointmentscreen');
+              Navigator.of(context).pushNamed('/appointmentscreen');
             },
           )
         ],

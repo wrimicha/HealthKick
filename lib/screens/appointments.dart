@@ -10,5 +10,15 @@ class AppointmentPage extends StatefulWidget {
 
 class AppointmentScreen extends State<AppointmentPage> {
   @override
-  Widget build(BuildContext context) {}
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: Text("Create appointments"),
+      ),
+      body: Column(
+        children: [Text("TEST")],
+      ),
+    );
+  }
 }
