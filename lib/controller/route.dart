@@ -4,6 +4,7 @@ import 'package:healthkick/screens/chathomescreen_doctor.dart';
 import 'package:healthkick/screens/chathomescreen_patient.dart';
 import 'package:healthkick/screens/chatroomscreen.dart';
 import 'package:healthkick/screens/homescreen.dart';
+import 'package:healthkick/screens/homescreendoctor.dart';
 import 'package:healthkick/screens/loginscreen.dart';
 import 'package:healthkick/screens/searchscreen.dart';
 
@@ -38,6 +39,9 @@ class RouteGenerator {
 
       case '/searchscreen':
         return MaterialPageRoute(builder: (_) => new Search());
+
+      case '/homescreendoctor':
+        return MaterialPageRoute(builder: (_) => new HomePageDoctor());
 
       default: //if there is no route with the name specified, return an error page
         return _routeNotFound();
