@@ -80,6 +80,7 @@ class LoginPage extends StatelessWidget {
                 .then((value) {
               print(value.data());
               typeOfUser = value.data()['type'];
+
               Constants.userName = value.data()['name'];
 
               if (value.data()['type'] == "doctor") {
