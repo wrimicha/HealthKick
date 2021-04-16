@@ -41,7 +41,7 @@ class HomePage extends State<HomePagePatient> {
       body: Container(
           width: double.infinity,
           child: Column(
-        children: [
+          children: [
           Text("Hello " + Constants.userName),
           RaisedButton(
             child: Text("Go to chat page"),
@@ -97,6 +97,122 @@ class HomePage extends State<HomePagePatient> {
                   },
                 ),
             ),
+          ),
+          ),
+
+          Container(
+            //margin: EdgeInsets.symmetric(vertical: 20.0),
+            height: 200.0,
+            margin: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+            child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              SizedBox(width: 15.0),
+              SizedBox(
+                height: 60.0,
+                width: 180.0, // <-- match_parent
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14.0),
+                      ),
+                    ),
+                  ),
+                  child: Text(
+                    'Sign In',
+                    style: TextStyle(
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () {
+                    //do something
+                  },
+                ),
+              ),
+              SizedBox(width: 10.0),
+              SizedBox(
+                height: 60.0,
+                width: 180.0, // <-- match_parent
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.blue[400]),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14.0),
+                      ),
+                    ),
+                  ),
+                  child: Text(
+                    'Sign In',
+                    style: TextStyle(
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () {
+                    //do something
+                  },
+                ),
+              ),
+              SizedBox(width: 10.0),
+              SizedBox(
+                height: 60.0,
+                width: 180.0, // <-- match_parent
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green[400]),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14.0),
+                      ),
+                    ),
+                  ),
+                  child: Text(
+                    'Sign In',
+                    style: TextStyle(
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () {
+                    //do something
+                  },
+                ),
+              ),
+              SizedBox(width: 10.0),
+              SizedBox(
+                height: 60.0,
+                width: 180.0, // <-- match_parent
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.pink[400]),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14.0),
+                      ),
+                    ),
+                  ),
+                  child: Text(
+                    'Sign In',
+                    style: TextStyle(
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () {
+                    //do something
+                  },
+                ),
+              ),
+              SizedBox(width: 10.0),
+            ],
           ),
           ),
         ],
