@@ -39,6 +39,7 @@ class HomePage extends State<HomePagePatient> {
         automaticallyImplyLeading: false,
       ),
       body: Container(
+          width: double.infinity,
           child: Column(
         children: [
           Text("Hello " + Constants.userName),
@@ -50,25 +51,54 @@ class HomePage extends State<HomePagePatient> {
               //print(appointments);
             },
           ),
-          StreamBuilder<DocumentSnapshot>(
-            stream: FirebaseFirestore.instance
-                .collection('users')
-                .doc(Constants.uid)
-                .snapshots(),
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) {
-                return Text("Loading...");
-              } else if (snapshot.hasData) {
-                Map<String, dynamic> documentFields = snapshot.data.data();
-                return documentFields['appointments'].toString().isEmpty
-                    ? Text("No Appointments so far")
-                    : Text("Upcoming Appointments:\n" +
-                        documentFields['appointments']);
-              } else {
-                return Text("Loading");
-              }
-            },
-          )
+
+          Container(
+            height: 80.0,
+            width: double.infinity,
+            //color: Colors.transparent,
+            margin: EdgeInsetsDirectional.fromSTEB(18.0, 20, 18.0, 0),
+            child: Container(
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(4,131,184, .1),
+                    borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                child:
+                Container(
+                  padding: EdgeInsetsDirectional.fromSTEB(18.0, 10, 0, 0),
+                child: StreamBuilder<DocumentSnapshot>(
+                  stream: FirebaseFirestore.instance
+                      .collection('users')
+                      .doc(Constants.uid)
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return Text("Loading...");
+                    } else if (snapshot.hasData) {
+                      Map<String, dynamic> documentFields = snapshot.data.data();
+                      return documentFields['appointments'].toString().isEmpty
+                          ? Text(
+                          "No Appointments so far",
+                            style: TextStyle(fontSize: 14.0,
+                            fontWeight: FontWeight.bold),
+                            )
+                          : Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Upcoming Appointments:",
+                                  style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(height: 10.0),
+                                Text(documentFields['appointments']),
+                              ],
+                        );
+                    } else {
+                      return Text("Loading...");
+                    }
+                  },
+                ),
+            ),
+          ),
+          ),
         ],
       )),
     );
