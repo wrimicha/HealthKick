@@ -170,12 +170,16 @@ class _ProfilePage extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text('I\'m an App'),
-          backgroundColor: Colors.red[600],
+        appBar:PreferredSize(
+        preferredSize: Size.fromHeight(60.0),
+        child: AppBar(
+          title: Text('My App'),
+          backgroundColor: Colors.red[400],
         ),
-        body: Padding(
+        ),
+        body:
+        SingleChildScrollView(
+        child: Padding(
           padding: const EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 0),
           //Reference for padding: https://api.flutter.dev/flutter/painting/EdgeInsets-class.html
           child: Stack(
@@ -312,6 +316,7 @@ class _ProfilePage extends State<ProfilePage> {
             ],
           ),
         ),
+      ),
       ),
     );
   }
