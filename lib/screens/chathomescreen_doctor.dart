@@ -136,17 +136,20 @@ class ChatRoomsTile extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              height: 30,
-              width: 30,
+              height: 40,
+              width: 40,
               decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(30)),
-              child: Text(userName.substring(0, 1),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontFamily: 'OverpassRegular',
-                      fontWeight: FontWeight.w300)),
+                  color: Colors.blue[20],
+                  borderRadius: BorderRadius.circular(8.0)),
+              child: Image.asset(
+                'assets/profile_empty.jpg', //todo: use user's profile image.
+              ),
+              // textAlign: TextAlign.center,
+              // style: TextStyle(
+              //     color: Colors.black,
+              //     fontSize: 16,
+              //     fontFamily: 'OverpassRegular',
+              //     fontWeight: FontWeight.w300)),
             ),
             SizedBox(
               width: 12,

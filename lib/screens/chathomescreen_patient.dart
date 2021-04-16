@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:healthkick/models/constants.dart';
 import 'package:healthkick/services/authenticationservice.dart';
 import 'package:healthkick/services/database.dart';
@@ -129,17 +130,20 @@ class ChatRoomsTile extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              height: 30,
-              width: 30,
+              height: 40,
+              width: 40,
               decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(30)),
-              child: Text(userName.substring(0, 1),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontFamily: 'OverpassRegular',
-                      fontWeight: FontWeight.w500)),
+                  color: Colors.blue[20],
+                  borderRadius: BorderRadius.circular(8.0)),
+              child: Image.asset(
+                'assets/profile_empty.jpg', //todo: use user's profile image.
+              ),
+              //textAlign: TextAlign.center,
+              // style: TextStyle(
+              //     color: Colors.black,
+              //     fontSize: 16,
+              //     fontFamily: 'OverpassRegular',
+              //     fontWeight: FontWeight.w500)),
             ),
             SizedBox(
               width: 12,
@@ -157,3 +161,13 @@ class ChatRoomsTile extends StatelessWidget {
     );
   }
 }
+// old decoration //  decoration: BoxDecoration(
+//                   color: Colors.blue, borderRadius: BorderRadius.circular(30)),
+//               child: Text(userName.substring(0, 1),
+//                   textAlign: TextAlign.center,
+//                   style: TextStyle(
+//                       color: Colors.black,
+//                       fontSize: 16,
+//                       fontFamily: 'OverpassRegular',
+//                       fontWeight: FontWeight.w500)),
+//             ),
