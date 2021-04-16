@@ -30,6 +30,8 @@ dependencies:
   firebase_database: "^6.0.0"
   shared_preferences: '>=0.5.12+2 <2.0.0'
   google_maps_flutter:
+  image_picker:
+  image_cropper:
   geolocator: ^6.1.1
 
 

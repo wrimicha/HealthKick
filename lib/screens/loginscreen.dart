@@ -24,41 +24,123 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-          automaticallyImplyLeading: false, backgroundColor: Colors.pink[600]),
       body: Form(
           key: _formKey,
-          child: Column(
-            children: <Widget>[
-              TextFormField(
-                // ignore: missing_return
-                validator: (input) {
-                  if (input.isEmpty) {
-                    return 'Provide an email';
-                  }
-                },
-                decoration: InputDecoration(labelText: 'Email'),
-                onSaved: (input) => _email = input,
-              ),
-              TextFormField(
-                // ignore: missing_return
-                validator: (input) {
-                  if (input.length < 6) {
-                    return 'Longer password please';
-                  }
-                },
-                decoration: InputDecoration(labelText: 'Password'),
-                onSaved: (input) => _password = input,
-                obscureText: true,
-              ),
-              RaisedButton(
-                onPressed: () {
-                  signIn(context);
-                },
-                child: Text('Sign in'),
-              ),
-            ],
-          )),
+          child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(height: 80.0),
+
+                  Container(
+                      margin: EdgeInsetsDirectional.fromSTEB(18.0, 0, 18.0, 0),
+                      //padding: EdgeInsets.all(20),
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            'Sign In',
+                            style: TextStyle(
+                              fontSize: 32.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.red[500],
+                            ),
+                          ),
+                          SizedBox(height: 20.0),
+                          Text(
+                            'Please sign in with your email registered at Northgate Medical Doctors Office',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.black38,
+                            ),
+                          ),
+                          SizedBox(height: 40.0),
+                          TextFormField(
+                            // ignore: missing_return
+                            validator: (input) {
+                              if (input.isEmpty) {
+                                return 'Provide an email';
+                              }
+                            },
+                            decoration: InputDecoration(
+                              labelText: "Enter Email",
+                              fillColor: Colors.white,
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                borderSide: BorderSide(
+                                  width: 1.5,
+                                  color: Colors.grey[500],
+                                ),
+                              ),
+                            ),
+                            onSaved: (input) => _email = input,
+                          ),
+                          SizedBox(height: 40.0),
+                          TextFormField(
+                            // ignore: missing_return
+                            validator: (input) {
+                              if (input.length < 6) {
+                                return 'Longer password please';
+                              }
+                            },
+                            decoration: InputDecoration(
+                              labelText: "Enter Password",
+                              fillColor: Colors.white,
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                borderSide: BorderSide(
+                                  width: 1.5,
+                                  color: Colors.grey[500],
+                                ),
+                              ),
+                            ),
+                            onSaved: (input) => _password = input,
+                            obscureText: true,
+                          ),
+                          SizedBox(height: 70.0),
+                          SizedBox(
+                            height: 60.0,
+                            width: double.infinity, // <-- match_parent
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all<Color>(Colors.red[400]),
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(14.0),
+                                      side: BorderSide(color: Colors.red)
+                                  ),
+                                ),
+                              ),
+                              child: Text(
+                                'Sign In',
+                                style: TextStyle(
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              onPressed: () {
+                                signIn(context);
+                              },
+                            ),
+                          ),
+                        ],
+                      )
+                  ),
+                ],
+              )),
+          )
     );
   }
 
