@@ -39,11 +39,22 @@ class HomePage extends State<HomePagePatient> {
         automaticallyImplyLeading: false,
       ),
       body: Container(
+          margin: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
           width: double.infinity,
           child: Column(
           children: [
-          Text("Hello " + Constants.userName),
-
+            SizedBox(
+            width: double.infinity,
+             child: Container(
+               margin: EdgeInsetsDirectional.fromSTEB(18.0, 0, 0, 15),
+              child: Text(
+                "Hello " + Constants.userName + ",",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 26.0,
+                    fontWeight: FontWeight.bold),
+              ),
+             ),
+            ),
           Container(
             height: 80.0,
             width: double.infinity,
