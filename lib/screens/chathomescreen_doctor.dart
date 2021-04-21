@@ -97,7 +97,7 @@ class ChatHomeDoctor extends State<ChatDoctor> {
               })
         ],
         backgroundColor: Colors.pink[600],
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
       body: Container(
         child: chatRoomsList(),
