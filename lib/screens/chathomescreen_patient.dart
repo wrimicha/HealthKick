@@ -98,7 +98,7 @@ class ChatHomePatient extends State<ChatPatient> {
               })
         ],
         backgroundColor: Colors.pink[600],
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
       body: Container(
         child: chatRoomsList(),
