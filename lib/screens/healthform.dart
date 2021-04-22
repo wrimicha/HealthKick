@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:healthkick/services/database.dart';
 
 class HealthFrom extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class HealthFormView extends State<HealthFrom> {
   var medications;
   var vaccinations;
   var healthStatusDate =
-      " As of ${DateTime.now().year}/${DateTime.now().month}/${DateTime.now().day}";
+      " As Of ${DateTime.now().year}/${DateTime.now().month}/${DateTime.now().day}";
   var healthStatus;
   @override
   Widget build(BuildContext context) {
@@ -58,9 +59,6 @@ class HealthFormView extends State<HealthFrom> {
                     labelText: 'Patient Drugs',
                     icon: Icon(Icons.medical_services),
                   ),
-                  validator: (value) => value.isEmpty
-                      ? "Medications cannot be empty.\nPlease enter correct email"
-                      : null,
                 ),
                 SizedBox(
                   height: 12,
@@ -72,8 +70,13 @@ class HealthFormView extends State<HealthFrom> {
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
                       _formKey.currentState.save();
-                      print(healthStatus); //add database method.
+                      DatabaseManager().getPatientId(
+                        patientEmail,
+                        _medicationsController.text,
+                        "medications",
+                      );
                     }
+                    _medicationsController.clear();
                   },
                 ),
                 SizedBox(
@@ -87,9 +90,6 @@ class HealthFormView extends State<HealthFrom> {
                     labelText: 'Patient Vaccincations',
                     icon: Icon(Icons.coronavirus),
                   ),
-                  validator: (value) => value.isEmpty
-                      ? "Vaccinations cannot be empty.\nPlease enter correct email"
-                      : null,
                 ),
                 SizedBox(
                   height: 12,
@@ -101,8 +101,13 @@ class HealthFormView extends State<HealthFrom> {
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
                       _formKey.currentState.save();
-                      print(healthStatus); //add database method.
+                      DatabaseManager().getPatientId(
+                        patientEmail,
+                        _vaccinationController.text,
+                        "vaccinations",
+                      );
                     }
+                    _vaccinationController.clear();
                   },
                 ),
                 SizedBox(
@@ -117,9 +122,6 @@ class HealthFormView extends State<HealthFrom> {
                     labelText: 'Patient Status As of Today',
                     icon: Icon(Icons.healing_outlined),
                   ),
-                  validator: (value) => value.isEmpty
-                      ? "Health Status cannot be empty.\nPlease enter correct email"
-                      : null,
                 ),
                 SizedBox(
                   height: 12,
@@ -131,8 +133,13 @@ class HealthFormView extends State<HealthFrom> {
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
                       _formKey.currentState.save();
-                      print(healthStatus); //add database method.
+                      DatabaseManager().getPatientId(
+                        patientEmail,
+                        healthStatus.toString(),
+                        "status",
+                      );
                     }
+                    _healthStatusController.clear();
                   },
                 )
               ],
