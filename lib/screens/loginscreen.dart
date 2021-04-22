@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:healthkick/models/constants.dart';
 import 'package:healthkick/models/patient.dart';
+import 'package:healthkick/screens/profile.dart';
 import 'package:healthkick/services/authenticationservice.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -157,6 +158,10 @@ class LoginPage extends StatelessWidget {
                 .then((value) {
               print(value.data());
               typeOfUser = value.data()['type'];
+              Constants.age = value.data()['age'];
+              Constants.gender = value.data()['gender'];
+              Constants.weight = value.data()['weight'];
+              Constants.dateOfBirth = value.data()['birth'];
 
               Constants.userName = value.data()['name'];
               Constants.uid = FirebaseAuth.instance.currentUser.uid;
