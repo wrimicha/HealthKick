@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:healthkick/controller/route.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'dart:async';
+
+FirebaseFirestore firestore = FirebaseFirestore.instance;
 
 Future<void> main() async {
   //initializing firebase app.
@@ -39,10 +42,29 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Completer<GoogleMapController> _controller = Completer();
 
-  static const LatLng _center = const LatLng(43.6532, -79.3832);
+  static const _center = const LatLng(43.6532, -79.3832);
+
+  Set<Marker> _markers = {};
 
   void _onMapCreated(GoogleMapController controller) {
     _controller.complete(controller);
+    setState(() {
+      _markers.add(
+        Marker(markerId: MarkerId('id-1'),
+          position: LatLng(43.6532, -79.3832),
+        ),
+      );
+      _markers.add(
+        Marker(markerId: MarkerId('id-2'),
+          position: LatLng(43.6205, -79.5132),
+        ),
+      );
+      _markers.add(
+        Marker(markerId: MarkerId('id-3'),
+          position: LatLng(43.7615, -79.4111),
+        ),
+      );
+    });
   }
 
   @override
@@ -54,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
         automaticallyImplyLeading: false,
       ),
       body: GoogleMap(
+        markers: _markers,
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
           target: _center,
