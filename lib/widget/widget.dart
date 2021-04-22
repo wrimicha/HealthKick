@@ -4,7 +4,8 @@ import 'package:healthkick/models/constants.dart';
 Widget appBarMain(BuildContext context) {
   //todo:add logout button and change color to pink
   return AppBar(
-    title: Text("${Constants.chattingWith}"),
+    title:
+        Constants.route == "search" ? Text("Search For Patient") : Text("Chat"),
     elevation: 0.0,
     centerTitle: false,
     backgroundColor: Colors.pink[600],

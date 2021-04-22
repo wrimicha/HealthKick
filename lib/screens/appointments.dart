@@ -118,6 +118,9 @@ class AppointmentScreen extends State<AppointmentPage> {
                     labelText: 'Patient Email',
                     icon: Icon(Icons.email),
                   ),
+                  validator: (value) => value.isEmpty
+                      ? "Patient's email cannot be empty.\nPlease enter correct email"
+                      : null,
                 ),
                 GestureDetector(
                   onTap: () => _selectDate(context),
@@ -143,8 +146,8 @@ class AppointmentScreen extends State<AppointmentPage> {
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
                       _formKey.currentState.save();
-                      DatabaseManager()
-                          .getPatientId(patientEmail, appointmentDate);
+                      DatabaseManager().getPatientId(
+                          patientEmail, appointmentDate, "appointment");
                     }
                     _dateController.clear();
                     _emailController.clear();

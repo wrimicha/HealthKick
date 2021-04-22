@@ -24,7 +24,7 @@ class DatabaseManager {
     });
   }
 
-  getPatientId(String email, String date) async {
+  getPatientId(String email, String date, String operation) async {
     String userid;
     await FirebaseFirestore.instance
         .collection('users')
@@ -34,12 +34,21 @@ class DatabaseManager {
       querySnapshot.docs.forEach((element) {
         userid = element.data()['id'];
         printVal(userid);
-        createPatientAppointment(userid, date);
+        if (operation == "appointment") {
+          createPatientAppointment(userid, date);
+        } else if (operation == "healthprofile") {}
       });
     });
   }
 
   createPatientAppointment(String uid, String date) async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .update({'appointments': date});
+  }
+
+  createPatientHealthForm(String uid, String date) async {
     await FirebaseFirestore.instance
         .collection('users')
         .doc(uid)

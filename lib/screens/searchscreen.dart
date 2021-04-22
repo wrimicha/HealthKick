@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:healthkick/models/constants.dart';
 import 'package:healthkick/screens/chatroomscreen.dart';
 import 'package:healthkick/services/database.dart';
 import 'package:flutter/material.dart';
@@ -137,6 +138,7 @@ class SearchScreen extends State<Search> {
 
   @override
   Widget build(BuildContext context) {
+    Constants.route = "search";
     return Scaffold(
       appBar: appBarMain(context),
       body: isLoading

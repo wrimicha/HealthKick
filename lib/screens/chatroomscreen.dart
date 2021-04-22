@@ -83,6 +83,7 @@ class ChatRoom extends State<Chat> {
 
   @override
   Widget build(BuildContext context) {
+    Constants.route = "Chat";
     return Scaffold(
       appBar: appBarMain(context),
       body: Container(

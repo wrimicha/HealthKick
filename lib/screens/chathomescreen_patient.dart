@@ -74,8 +74,6 @@ class ChatHomePatient extends State<ChatPatient> {
     await DatabaseManager().getUserChats(Constants.userName).then((snapshot) {
       setState(() {
         chatRooms = snapshot;
-        print(
-            "we got the data + ${chatRooms.toString()} name is ${Constants.userName}");
       });
     });
   }
