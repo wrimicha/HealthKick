@@ -268,7 +268,8 @@ class _ProfilePage extends State<ProfilePage> {
                             ),
                           ),
                           onPressed: () {
-                            print('Pressed');
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => VaccinationView()));
                           },
                         ),
                       ),
@@ -287,7 +288,8 @@ class _ProfilePage extends State<ProfilePage> {
                             ),
                           ),
                           onPressed: () {
-                            print('Pressed');
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => MedicationView()));
                           },
                         ),
                       ),
@@ -306,7 +308,8 @@ class _ProfilePage extends State<ProfilePage> {
                             ),
                           ),
                           onPressed: () {
-                            print('Pressed');
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => HistoyView()));
                           },
                         ),
                       ),
@@ -325,7 +328,8 @@ class _ProfilePage extends State<ProfilePage> {
                             ),
                           ),
                           onPressed: () {
-                            print('Pressed');
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => VisitView()));
                           },
                         ),
                       ),
@@ -339,5 +343,209 @@ class _ProfilePage extends State<ProfilePage> {
         ),
       ),
     );
+  }
+}
+
+class VaccinationView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Vaccinations"),
+          backgroundColor: Colors.red[600],
+        ),
+        body: Container(
+            child: Container(
+          padding: EdgeInsetsDirectional.fromSTEB(18.0, 10, 0, 0),
+          child: StreamBuilder<DocumentSnapshot>(
+            stream: FirebaseFirestore.instance
+                .collection('users')
+                .doc(Constants.uid)
+                .snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Text("Loading...");
+              } else if (snapshot.hasData) {
+                Map<String, dynamic> documentFields = snapshot.data.data();
+                return documentFields['vaccination'].toString().isEmpty
+                    ? Text(
+                        "No Vaccincations so far",
+                        style: TextStyle(
+                            fontSize: 32.0, fontWeight: FontWeight.bold),
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Vaccinations:",
+                            style: TextStyle(
+                                fontSize: 26.0, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 10.0),
+                          Text(
+                            documentFields['vaccination'],
+                            style: TextStyle(fontSize: 19),
+                          ),
+                        ],
+                      );
+              } else {
+                return Text("Loading...");
+              }
+            },
+          ),
+        )));
+  }
+}
+
+class MedicationView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Medications"),
+          backgroundColor: Colors.red[600],
+        ),
+        body: Container(
+            child: Container(
+          padding: EdgeInsetsDirectional.fromSTEB(18.0, 10, 0, 0),
+          child: StreamBuilder<DocumentSnapshot>(
+            stream: FirebaseFirestore.instance
+                .collection('users')
+                .doc(Constants.uid)
+                .snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Text("Loading...");
+              } else if (snapshot.hasData) {
+                Map<String, dynamic> documentFields = snapshot.data.data();
+                return documentFields['medications'].toString().isEmpty
+                    ? Text(
+                        "No medications so far",
+                        style: TextStyle(
+                            fontSize: 32.0, fontWeight: FontWeight.bold),
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Medications:",
+                            style: TextStyle(
+                                fontSize: 26.0, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 10.0),
+                          Text(
+                            documentFields['medications'],
+                            style: TextStyle(fontSize: 19),
+                          ),
+                        ],
+                      );
+              } else {
+                return Text("Loading...");
+              }
+            },
+          ),
+        )));
+  }
+}
+
+class HistoyView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Health History"),
+          backgroundColor: Colors.red[600],
+        ),
+        body: Container(
+            child: Container(
+          padding: EdgeInsetsDirectional.fromSTEB(18.0, 10, 0, 0),
+          child: StreamBuilder<DocumentSnapshot>(
+            stream: FirebaseFirestore.instance
+                .collection('users')
+                .doc(Constants.uid)
+                .snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Text("Loading...");
+              } else if (snapshot.hasData) {
+                Map<String, dynamic> documentFields = snapshot.data.data();
+                return documentFields['status'].toString().isEmpty
+                    ? Text(
+                        "History is empty",
+                        style: TextStyle(
+                            fontSize: 32.0, fontWeight: FontWeight.bold),
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "History:",
+                            style: TextStyle(
+                                fontSize: 26.0, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 10.0),
+                          Text(
+                            documentFields['status'],
+                            style: TextStyle(fontSize: 19),
+                          ),
+                        ],
+                      );
+              } else {
+                return Text("Loading...");
+              }
+            },
+          ),
+        )));
+  }
+}
+
+class VisitView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Visit History"),
+          backgroundColor: Colors.red[600],
+        ),
+        body: Container(
+            child: Container(
+          padding: EdgeInsetsDirectional.fromSTEB(18.0, 10, 0, 0),
+          child: StreamBuilder<DocumentSnapshot>(
+            stream: FirebaseFirestore.instance
+                .collection('users')
+                .doc(Constants.uid)
+                .snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Text("Loading...");
+              } else if (snapshot.hasData) {
+                Map<String, dynamic> documentFields = snapshot.data.data();
+                return documentFields['appointments'].toString().isEmpty
+                    ? Text(
+                        "History is empty",
+                        style: TextStyle(
+                            fontSize: 32.0, fontWeight: FontWeight.bold),
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Visit History:",
+                            style: TextStyle(
+                                fontSize: 26.0, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 10.0),
+                          Text(
+                            documentFields['appointments'],
+                            style: TextStyle(fontSize: 19),
+                          ),
+                        ],
+                      );
+              } else {
+                return Text("Loading...");
+              }
+            },
+          ),
+        )));
   }
 }
