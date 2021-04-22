@@ -162,11 +162,6 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePage extends State<ProfilePage> {
-  String age;
-  String gender;
-  String weight;
-  String dateOfBirth;
-
   @override
   void initState() {
     super.initState();
@@ -250,6 +245,11 @@ class _ProfilePage extends State<ProfilePage> {
                       ),
                       Text(
                         'Date of Birth: ${Constants.dateOfBirth}',
+                        //change this to name from firebase
+                        style: TextStyle(fontSize: 14.0),
+                      ),
+                      Text(
+                        'Office: ${Constants.office}',
                         //change this to name from firebase
                         style: TextStyle(fontSize: 14.0),
                       ),

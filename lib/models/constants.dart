@@ -7,4 +7,5 @@ class Constants {
   static String weight;
   static String gender;
   static String dateOfBirth;
+  static String office;
 }

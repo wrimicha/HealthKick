@@ -162,6 +162,7 @@ class LoginPage extends StatelessWidget {
               Constants.gender = value.data()['gender'];
               Constants.weight = value.data()['weight'];
               Constants.dateOfBirth = value.data()['birth'];
+              Constants.office = value.data()['office'];
 
               Constants.userName = value.data()['name'];
               Constants.uid = FirebaseAuth.instance.currentUser.uid;
