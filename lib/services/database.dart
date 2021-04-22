@@ -24,7 +24,7 @@ class DatabaseManager {
     });
   }
 
-  getPatientId(String email, String date, String operation) async {
+  getPatientId(String email, String data, String operation) async {
     String userid;
     await FirebaseFirestore.instance
         .collection('users')
@@ -35,8 +35,14 @@ class DatabaseManager {
         userid = element.data()['id'];
         printVal(userid);
         if (operation == "appointment") {
-          createPatientAppointment(userid, date);
-        } else if (operation == "healthprofile") {}
+          createPatientAppointment(userid, data);
+        } else if (operation == "medications") {
+          createPatientMedications(userid, data);
+        } else if (operation == "vaccinations") {
+          createPatientVaccination(userid, data);
+        } else if (operation == "status") {
+          createPatientForm(userid, data);
+        }
       });
     });
   }
@@ -48,11 +54,25 @@ class DatabaseManager {
         .update({'appointments': date});
   }
 
-  createPatientHealthForm(String uid, String date) async {
+  createPatientMedications(String uid, String med) async {
     await FirebaseFirestore.instance
         .collection('users')
         .doc(uid)
-        .update({'appointments': date});
+        .update({'medications': med});
+  }
+
+  createPatientVaccination(String uid, String vac) async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .update({'vaccination': vac});
+  }
+
+  createPatientForm(String uid, String status) async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .update({'status': status});
   }
 
   printVal(String a) {
