@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:healthkick/controller/route.dart';
 import 'dart:async';
+// import 'package:location/location.dart';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -40,14 +41,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Completer<GoogleMapController> _controller = Completer();
+
+  GoogleMapController _controller;
 
   static const _center = const LatLng(43.6532, -79.3832);
 
   Set<Marker> _markers = {};
 
   void _onMapCreated(GoogleMapController controller) {
-    _controller.complete(controller);
+    _controller = controller;
     setState(() {
       _markers.add(
         Marker(markerId: MarkerId('id-1'),
@@ -71,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Maps Sample App'),
+        title: Text('Health Kick'),
         backgroundColor: Colors.red[400], //testt
         automaticallyImplyLeading: false,
       ),

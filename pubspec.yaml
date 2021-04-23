@@ -32,7 +32,9 @@ dependencies:
   google_maps_flutter:
   image_picker:
   image_cropper:
-  geolocator: ^6.1.1
+  #location:
+  #location_web:
+  #geolocator: ^6.1.1
 
 
 
