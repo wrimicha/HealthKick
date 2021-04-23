@@ -102,7 +102,6 @@ class HomePage extends State<HomePagePatient> {
             ),
           ),
           ),
-
           Container(
             //margin: EdgeInsets.symmetric(vertical: 20.0),
             height: 220.0,
@@ -230,6 +229,71 @@ class HomePage extends State<HomePagePatient> {
             ],
           ),
           ),
+            Container(
+                margin: EdgeInsetsDirectional.fromSTEB(18.0, 20, 18.0, 0),
+                child: Column(
+                children: [
+                SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 60.0,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.red[400]),
+                      shape:
+                      MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14.0),
+                            side: BorderSide(color: Colors.red)),
+                      ),
+                    ),
+                    child: Text(
+                      "Test Results",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 60.0,
+                  width: double.infinity, // <-- match_parent
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.red[400]),
+                      shape:
+                      MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14.0),
+                            side: BorderSide(color: Colors.red)),
+                      ),
+                    ),
+                    child: Text(
+                      "Medications",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {
+                    },
+                  ),
+                ),
+                ]
+              )
+            )
         ],
       )),
     );
