@@ -1,6 +1,6 @@
 # HealthKick 
 
-HealthKick is a cross-platform mobile application made using flutter and Firestore database that provides clients of family doctor clinics with the tools and resources they need to be healthy. My role for Health Kick was implementing the database, user's authentication and authorization. My major feature was implementing the chat system, where doctors are able to search for patients according to the office they are registered to and chat with them!
+HealthKick is a cross-platform mobile application made using flutter and Firestore database that provides clients of family doctor clinics with the tools and resources they need to be healthy. My role for Health Kick was implementing the database, user's authentication and authorization. My major feature was implementing the chat system, where doctors are able to search for patients according to the office they are registered to and chat with them.
 
 
 ## Some Images from the App
